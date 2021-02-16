@@ -1,4 +1,5 @@
 ﻿using FSDHInterview.Models;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 
@@ -6,6 +7,12 @@ namespace FSDHInterview.Business
 {
     public class PersonalLoanService
     {
+        private decimal InterestRate;
+        public PersonalLoanService(IConfiguration configuration)
+        {
+            InterestRate = decimal.Parse(configuration["InterestRates:PersonalLoan"]);
+        }
+
         /// <summary>
         /// Get the number of personal loans belonging to a customer
         /// </summary>
@@ -98,7 +105,7 @@ namespace FSDHInterview.Business
                 loanAmount += 30000m;
             }
 
-            return loanAmount;
+            return loanAmount -= loanAmount * InterestRate;
         }
     }
 }
