@@ -49,8 +49,7 @@ namespace CodingTests
          */
         private static void ProcessMultipleTransactions()
         {
-            //IEnumerable<int> customerIds = Enumerable.Range(1, 5000);
-            IEnumerable<int> customerIds = Enumerable.Range(1, 100);
+            IEnumerable<int> customerIds = Enumerable.Range(1, 5000);
 
             Infrastructure infrastructure = new Infrastructure();
 
