@@ -19,6 +19,9 @@ namespace CodingTests
             stopwatch.Stop();
 
             Console.WriteLine($"Total seconds to process transactions is {stopwatch.Elapsed.TotalSeconds}");
+            
+            //int uniqueCharacters = GetUniqueCharacters("Massachussets");
+            //Console.WriteLine($"The string Massachussets contains {uniqueCharacters} unique characters");
         }
 
         /*
@@ -62,6 +65,17 @@ namespace CodingTests
 
                 Console.WriteLine($"Processing completed successfully for customer with ID: {id}");
             }
+        }
+
+        /*
+         * Write a function to return the number of unique characters in a string.
+         * 
+         * 
+         * 
+         */
+        private static int GetUniqueCharacters(string input)
+        {
+            return 0;
         }
     }
 }
