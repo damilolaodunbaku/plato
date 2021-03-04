@@ -68,8 +68,8 @@ namespace CodingTests
         }
 
         /*
-         * Write a function to return the number of unique characters in a string.
-         * 
+         * 1. Write a function to return the number of unique characters in a string.
+         * 2. Convert this to an extension method
          * 
          * 
          */
