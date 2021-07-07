@@ -13,6 +13,7 @@ namespace FSDHInterview.Repository
         private readonly string _apiPassword;
 
         /*
+         * Question5:
          * This repository currently sets individual properties from configuration.
          * To reduce possibilities for errors, we would like to encapsulate all configuration properties in
          * a class and inject the configuration class
@@ -32,7 +33,7 @@ namespace FSDHInterview.Repository
 
 
         /*
-         * Question:
+         * Question2:
          * 1. What do you understand by Database Transactions?
          * 2. Using the LoanContext class, how would you perform multiple database operations within a database transaction.
          * 

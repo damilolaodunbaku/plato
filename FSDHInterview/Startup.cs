@@ -38,7 +38,7 @@ namespace FSDHInterview
 
             });
             services.AddScoped<FSDHRepository>();
-            services.AddScoped<AuthenticationService>();
+            services.AddSingleton<AuthenticationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace FSDHInterview.Services
 {
     /*
+     * Question6:
      * The authentication service below consumes another service called FSDHRepository.
      * The authentication service is registered as a singleton while repository service
      * is registered as a scoped service.

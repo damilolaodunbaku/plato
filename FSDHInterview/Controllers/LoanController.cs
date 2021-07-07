@@ -30,6 +30,7 @@ namespace FSDHInterview.Controllers
         }
 
         /*
+         * Question3:
          * The CredentialsDTO class below is used to receive customer username and password when a customer signs-up
          * The class needs the following validation
          * 1. Username is mandatory and must be longer than 6 characters.
@@ -52,6 +53,7 @@ namespace FSDHInterview.Controllers
         }
 
         /*
+         * Question4:
          * Assume that the code in the action method below calls an api.
          * 1. Complete the code portion to make an HTTP Get request and return the status code
          * 2. Optimize the code to inject the HttpClient instance via dependency injection.
