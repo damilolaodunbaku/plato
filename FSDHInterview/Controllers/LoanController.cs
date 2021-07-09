@@ -57,7 +57,7 @@ namespace FSDHInterview.Controllers
          * Assume that the code in the action method below calls an api.
          * 1. Complete the code portion to make an HTTP Get request and return the status code
          * 2. Optimize the code to inject the HttpClient instance via dependency injection.
-         * 
+         * 3. Assume you are required to add the time of request to a header x-req-time, how would you achieve this?
          * 
          * 
          */
@@ -74,6 +74,28 @@ namespace FSDHInterview.Controllers
             }
             catch (Exception)
             {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        /*
+         * Question7:
+         * 1. How do we restrict API access to logged in users?
+         * 2. How can we allow only logged in users with a loan type of CarLoan to access the API 
+         * 
+         * 
+         * 
+         */
+        [HttpPost("transaction/carloan/{loanType:int}")]
+        public async Task<ActionResult> CreateNewCarLoanTransaction([FromRoute]LoanType loanType)
+        {
+            try
+            {
+                return Ok();
+            }
+            catch (Exception e)
+            {
+
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }

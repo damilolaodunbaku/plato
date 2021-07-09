@@ -2,8 +2,8 @@
 {
     public enum LoanType
     {
-        CarLoan,
-        MortgageLoan,
-        PersonalLoan
+        CarLoan = 0,
+        MortgageLoan = 1,
+        PersonalLoan = 2
     }
 }
