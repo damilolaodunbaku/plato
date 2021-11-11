@@ -1,17 +1,12 @@
-using FSDHInterview.EF;
+using FSDHInterview.Contexts;
+using FSDHInterview.Repository;
+using FSDHInterview.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace FSDHInterview
 {
@@ -28,6 +23,29 @@ namespace FSDHInterview
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddDbContext<LoanContext>(options =>
+                options.UseInMemoryDatabase("CustomerDB"));
+
+            services.AddSwaggerGen(setupAction =>
+            {
+                setupAction.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+                {
+                    Contact = new Microsoft.OpenApi.Models.OpenApiContact
+                    {
+                        Email = "appsupport@fsdhgroup.com",
+                        Name = "Application Support",
+
+                    },
+                    Version = "1.0",
+                    Description = "A set of API'S for FSDH Interview.",
+                    Title = "FSDH Interview API"
+                });
+
+            });
+
+            services.AddScoped<FSDHRepository>();
+            services.AddSingleton<AuthenticationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,6 +55,13 @@ namespace FSDHInterview
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "FSDH Interview API v1");
+                c.RoutePrefix = string.Empty;
+            });
 
             app.UseHttpsRedirection();
 
