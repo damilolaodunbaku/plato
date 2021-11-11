@@ -1,7 +1,9 @@
+using FSDHInterview.Contexts;
 using FSDHInterview.Repository;
 using FSDHInterview.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -21,6 +23,10 @@ namespace FSDHInterview
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddDbContext<LoanContext>(options =>
+                options.UseInMemoryDatabase("CustomerDB"));
+
             services.AddSwaggerGen(setupAction =>
             {
                 setupAction.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
@@ -37,6 +43,7 @@ namespace FSDHInterview
                 });
 
             });
+
             services.AddScoped<FSDHRepository>();
             services.AddSingleton<AuthenticationService>();
         }
